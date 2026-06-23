@@ -513,33 +513,31 @@ p.body {
 
 /* ══ COUNTDOWN ══ */
 .countdown {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 10px;
-  max-width: 440px;
-  margin: 40px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
+    text-align: center;
 }
+
 .cd {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 18px 6px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .cd-n {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  color: var(--tembaga-lt);
-  font-weight: 400;
-  line-height: 1;
+    font-size: 32px;
+    font-weight: bold;
 }
+
 .cd-l {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.3);
-  margin-top: 6px;
+    font-size: 10px;
+    text-transform: uppercase;
 }
+
 
 /* ══ SEP ══ */
 .sep { width:1px; height:56px; background:linear-gradient(to bottom,transparent,var(--hijau-mid),transparent); margin: 0 auto; }
