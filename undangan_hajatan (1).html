@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Syukuran – Keluarga Bapak H. Suwardi</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --hijau:     #2D6A4F;
+  --hijau-mid: #40916C;
+  --hijau-pale:#D8F3DC;
+  --tembaga:   #C77D2C;
+  --tembaga-lt:#E8A44A;
+  --krem:      #F9F5EC;
+  --krem-dark: #EDE8D8;
+  --coklat:    #3B2A14;
+  --coklat-mid:#5C3D1A;
+  --muted:     #7A6548;
+  --putih:     #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--krem);
+  color: var(--coklat);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ══ BATIK PATTERN (SVG bg) ══ */
+.batik-bg {
+  background-color: var(--hijau);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='1'%3E%3Crect x='5' y='5' width='50' height='50' rx='2'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Cline x1='5' y1='30' x2='20' y2='30'/%3E%3Cline x1='40' y1='30' x2='55' y2='30'/%3E%3Cline x1='30' y1='5' x2='30' y2='20'/%3E%3Cline x1='30' y1='40' x2='30' y2='55'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ══ COVER ══ */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 32px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+}
+
+/* Batik border frame */
+.frame {
+  position: absolute;
+  inset: 16px;
+  pointer-events: none;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.frame-inner {
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.cover-tag {
+  position: relative;
+  background: var(--tembaga);
+  color: var(--putih);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 8px 24px;
+  margin-bottom: 36px;
+}
+
+.cover-bismillah {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(14px, 3vw, 18px);
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.cover-title {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 9vw, 80px);
+  font-weight: 700;
+  color: var(--putih);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.cover-title span {
+  color: var(--tembaga-lt);
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(24px, 5vw, 44px);
+  margin-top: 4px;
+}
+
+.cover-host {
+  position: relative;
+  margin-top: 28px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+}
+
+.cover-host strong {
+  display: block;
+  color: var(--putih);
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.cover-date-pill {
+  position: relative;
+  margin-top: 32px;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 10px 28px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.3);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: bob 2.5s ease-in-out infinite;
+}
+@keyframes bob {
+  0%,100%{transform:translateX(-50%) translateY(0);opacity:.4}
+  50%{transform:translateX(-50%) translateY(5px);opacity:.9}
+}
+
+/* ══ SECTIONS ══ */
+section {
+  padding: 72px 24px;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--hijau-pale);
+  color: var(--hijau);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 700;
+  color: var(--coklat);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+h2 em {
+  font-style: italic;
+  color: var(--hijau);
+}
+
+p.body {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 14px;
+  line-height: 1.9;
+}
+
+/* ══ DIVIDER ══ */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 28px auto;
+  max-width: 300px;
+}
+.divider-line { flex:1; height:1px; background: linear-gradient(to right, transparent, var(--tembaga-lt)); }
+.divider-line.r { background: linear-gradient(to left, transparent, var(--tembaga-lt)); }
+.divider svg { color: var(--tembaga); flex-shrink:0; }
+
+/* ══ ACARA (dark strip) ══ */
+.strip {
+  padding: 72px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.strip .tag { background: rgba(255,255,255,0.12); color: var(--hijau-pale); }
+.strip h2 { color: var(--putih); }
+.strip p.body { color: rgba(255,255,255,0.55); }
+
+/* ══ RUNDOWN ══ */
+.rundown {
+  max-width: 520px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rundown-item {
+  display: grid;
+  grid-template-columns: 80px 1px 1fr;
+  gap: 0 20px;
+  align-items: stretch;
+  text-align: left;
+}
+
+.rundown-time {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--tembaga-lt);
+  padding: 16px 0;
+  text-align: right;
+  line-height: 1.2;
+}
+.rundown-time small { display:block; font-size:10px; color:rgba(255,255,255,0.35); letter-spacing:1px; font-family:'Source Sans 3',sans-serif; font-weight:300; }
+
+.rundown-line {
+  width: 1px;
+  background: rgba(255,255,255,0.12);
+  position: relative;
+  flex-shrink: 0;
+}
+.rundown-line::before {
+  content:'';
+  position:absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width:8px; height:8px;
+  border-radius:50%;
+  background: var(--tembaga);
+  border:2px solid var(--hijau);
+}
+
+.rundown-content {
+  padding: 16px 0;
+}
+
+.rundown-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--putih);
+  margin-bottom: 2px;
+}
+
+.rundown-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.3px;
+}
+
+/* ══ HOST / PENYELENGGARA ══ */
+.host-card {
+  background: var(--putih);
+  border: 1px solid var(--krem-dark);
+  padding: 36px 32px;
+  margin: 36px 0;
+  text-align: center;
+  position: relative;
+}
+
+.host-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--hijau), var(--tembaga));
+}
+
+.host-monogram {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--hijau-pale);
+  border: 2px solid var(--hijau-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--hijau);
+}
+
+.host-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--coklat);
+  margin-bottom: 6px;
+}
+
+.host-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ══ MENU / HIDANGAN ══ */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 36px 0;
+}
+
+.menu-item {
+  background: var(--putih);
+  border: 1px solid var(--krem-dark);
+  padding: 20px 12px;
+  text-align: center;
+  border-bottom: 2px solid var(--hijau-pale);
+}
+
+.menu-item svg { color: var(--hijau-mid); margin-bottom: 8px; }
+
+.menu-item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--coklat);
+  margin-bottom: 2px;
+}
+
+.menu-item-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ══ LOKASI ══ */
+.lokasi-wrap {
+  background: var(--krem-dark);
+  border: 1px solid rgba(45,106,79,0.2);
+  padding: 36px 28px;
+  margin: 36px 0;
+  text-align: left;
+  position: relative;
+}
+
+.lokasi-label {
+  position: absolute;
+  top: -11px; left: 24px;
+  background: var(--krem);
+  padding: 0 12px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--hijau);
+  font-weight: 600;
+}
+
+.lokasi-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--coklat);
+  margin-bottom: 6px;
+}
+
+.lokasi-addr {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.btn-hijau {
+  display: inline-block;
+  background: var(--hijau);
+  color: var(--putih);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.btn-hijau:hover { background: var(--hijau-mid); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--hijau);
+  color: var(--hijau);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 12px 24px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: all .2s;
+}
+.btn-outline:hover { background: var(--hijau-pale); }
+
+/* ══ RSVP ══ */
+.rsvp-section {
+  background: var(--hijau);
+  padding: 72px 24px;
+  text-align: center;
+}
+.rsvp-section h2 { color: var(--putih); }
+.rsvp-section p.body { color: rgba(255,255,255,0.6); }
+.rsvp-section .tag { background:rgba(255,255,255,0.12); color:var(--hijau-pale); }
+
+.rsvp-form {
+  max-width: 460px;
+  margin: 36px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  color: var(--putih);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  outline: none;
+  border-radius: 0;
+  appearance: none;
+  transition: border-color .2s;
+}
+
+.rsvp-form input::placeholder,
+.rsvp-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+.rsvp-form select { color: rgba(255,255,255,0.6); }
+.rsvp-form select option { background: var(--hijau); color: var(--putih); }
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus { border-color: var(--tembaga-lt); }
+.rsvp-form textarea { resize: vertical; min-height: 80px; }
+
+.rsvp-form button {
+  background: var(--tembaga);
+  color: var(--putih);
+  border: none;
+  padding: 15px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+}
+.rsvp-form button:hover { background: var(--tembaga-lt); }
+
+/* ══ AYAT ══ */
+.verse {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(16px, 3.2vw, 22px);
+  font-style: italic;
+  color: var(--coklat-mid);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto 12px;
+}
+.verse-ref {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--tembaga);
+  font-weight: 600;
+}
+
+/* ══ COUNTDOWN ══ */
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  max-width: 440px;
+  margin: 40px auto 0;
+}
+.cd {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 18px 6px 14px;
+}
+.cd-n {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--tembaga-lt);
+  font-weight: 400;
+  line-height: 1;
+}
+.cd-l {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.3);
+  margin-top: 6px;
+}
+
+/* ══ SEP ══ */
+.sep { width:1px; height:56px; background:linear-gradient(to bottom,transparent,var(--hijau-mid),transparent); margin: 0 auto; }
+
+/* ══ FOOTER ══ */
+footer {
+  background: var(--coklat);
+  padding: 44px 24px;
+  text-align: center;
+}
+.footer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--tembaga-lt);
+  margin-bottom: 10px;
+}
+footer p { font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:2px; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 500px) {
+  .rundown-item { grid-template-columns: 64px 1px 1fr; gap: 0 12px; }
+  .rundown-time { font-size:16px; }
+  .rundown-name { font-size:13px; }
+  .lokasi-wrap { padding: 28px 18px; }
+  .btn-outline { margin-left:0; margin-top:8px; display:block; text-align:center; }
+  .btn-hijau { display:block; text-align:center; }
+  section { padding: 56px 20px; }
+  .host-card { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover batik-bg" role="banner">
+  <div class="frame"></div>
+  <div class="frame-inner"></div>
+
+  <div class="cover-tag">Undangan Tasyakuran</div>
+
+  <p class="cover-bismillah">Bismillahirrahmanirrahim</p>
+
+  <h1 class="cover-title">
+    Syukuran
+    <span>Khitanan & Aqiqah</span>
+  </h1>
+
+  <div class="cover-host">
+    <strong>Di rumah Bapak Hi. Gustriansyah</strong>
+  </div>
+
+  <div class="cover-date-pill">Minggu, 28 Juni 2026</div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Gulir ke bawah</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ══ OPENING QUOTE ══ -->
+<section aria-label="Ayat pembuka">
+  <div class="tag">Pembuka</div>
+
+  <div class="divider">
+    <span class="divider-line"></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+    <span class="divider-line r"></span>
+  </div>
+
+  <p class="verse">
+    "Setiap anak yang dilahirkan itu tergadai dengan aqiqahnya. Maka sembelihlah hewan aqiqah pada hari ketujuh, cukurlah rambutnya, dan berilah ia nama."
+  </p>
+  <p class="verse-ref">HR. Abu Dawud & Tirmidzi</p>
+</section>
+
+<div class="sep" aria-hidden="true"></div>
+
+<!-- ══ PENYELENGGARA ══ -->
+<section aria-label="Penyelenggara">
+  <h2>Dengan Penuh <em>Rasa Syukur</em></h2>
+  <p class="body">Kami sekeluarga mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara syukuran dan doa bersama ini.</p>
+
+  <p class="body" style="font-style:italic;color:var(--hijau);">
+    "Rasa syukur adalah kunci agar setiap karunia yang kita terima senantiasa bertambah dan membawa manfaat."
+  </p>
+</section>
+
+<!-- ══ ACARA (green strip) ══ -->
+<!-- <div class="strip batik-bg" aria-label="Rundown acara">
+  <div class="tag">Jadwal Acara</div>
+  <h2>Rangkaian <em style="color:var(--tembaga-lt)">Kegiatan</em></h2>
+  <p class="body">Ahad, 20 Juli 2025 · Kediaman Keluarga Besar</p>
+
+  <div class="rundown" role="list">
+    <div class="rundown-item" role="listitem">
+      <div class="rundown-time">08.00<small>WIB</small></div>
+      <div class="rundown-line"></div>
+      <div class="rundown-content">
+        <p class="rundown-name">Pembukaan & Sambutan</p>
+        <p class="rundown-desc">Pembacaan Al-Quran & doa pembuka acara</p>
+      </div>
+    </div>
+    <div class="rundown-item" role="listitem">
+      <div class="rundown-time">09.00<small>WIB</small></div>
+      <div class="rundown-line"></div>
+      <div class="rundown-content">
+        <p class="rundown-name">Prosesi Khitanan</p>
+        <p class="rundown-desc">Dipimpin oleh tenaga ahli bersertifikat</p>
+      </div>
+    </div>
+    <div class="rundown-item" role="listitem">
+      <div class="rundown-time">10.00<small>WIB</small></div>
+      <div class="rundown-line"></div>
+      <div class="rundown-content">
+        <p class="rundown-name">Ceramah Agama</p>
+        <p class="rundown-desc">Ustadz H. Mahmud Fadhillah, Lc.</p>
+      </div>
+    </div>
+    <div class="rundown-item" role="listitem">
+      <div class="rundown-time">11.00<small>WIB</small></div>
+      <div class="rundown-line"></div>
+      <div class="rundown-content">
+        <p class="rundown-name">Makan Siang Bersama</p>
+        <p class="rundown-desc">Hidangan tasyakuran & sate aqiqah</p>
+      </div>
+    </div>
+    <div class="rundown-item" role="listitem">
+      <div class="rundown-time">13.00<small>WIB</small></div>
+      <div class="rundown-line"></div>
+      <div class="rundown-content">
+        <p class="rundown-name">Doa Penutup</p>
+        <p class="rundown-desc">Selesai sesuai acara</p>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Countdown -->
+  <div style="margin-top:56px;">
+    <p style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:18px;">Menghitung Hari</p>
+    <div class="countdown" id="countdown">
+      <div class="cd"><span class="cd-n" id="cd-days">–</span><span class="cd-l">Hari</span></div>
+      <div class="cd"><span class="cd-n" id="cd-hours">–</span><span class="cd-l">Jam</span></div>
+      <div class="cd"><span class="cd-n" id="cd-mins">–</span><span class="cd-l">Menit</span></div>
+      <div class="cd"><span class="cd-n" id="cd-secs">–</span><span class="cd-l">Detik</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HIDANGAN ══
+<section aria-label="Hidangan">
+  <div class="tag">Hidangan</div>
+  <h2>Sajian <em>Tasyakuran</em></h2>
+  <p class="body">Kami menyiapkan hidangan khas syukuran sebagai wujud rasa terima kasih atas kehadiran Anda.</p>
+
+  <div class="menu-grid" role="list">
+    <div class="menu-item" role="listitem">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+      <p class="menu-item-name">Nasi Kebuli</p>
+      <p class="menu-item-sub">Khas aqiqah</p>
+    </div>
+    <div class="menu-item" role="listitem">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      <p class="menu-item-name">Sate Kambing</p>
+      <p class="menu-item-sub">Hewan aqiqah</p>
+    </div>
+    <div class="menu-item" role="listitem">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+      <p class="menu-item-name">Soto Ayam</p>
+      <p class="menu-item-sub">Kuah segar</p>
+    </div>
+    <div class="menu-item" role="listitem">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <p class="menu-item-name">Tumpeng Mini</p>
+      <p class="menu-item-sub">Simbol syukur</p>
+    </div>
+    <div class="menu-item" role="listitem">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+      <p class="menu-item-name">Aneka Kue</p>
+      <p class="menu-item-sub">Tradisional</p>
+    </div>
+    <div class="menu-item" role="listitem">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 17v4M7 4v3a5 5 0 0010 0V4"/><line x1="5" y1="4" x2="19" y2="4"/></svg>
+      <p class="menu-item-name">Minuman Segar</p>
+      <p class="menu-item-sub">Es buah & jus</p>
+    </div>
+  </div>
+</section> -->
+
+<div class="sep" aria-hidden="true"></div>
+
+<!-- ══ LOKASI ══ -->
+<section aria-label="Lokasi">
+  <div class="tag">Lokasi</div>
+  <h2>Tempat <em>Acara</em></h2>
+
+  <div class="lokasi-wrap" role="region" aria-label="Detail lokasi">
+    <span class="lokasi-label">Kediaman</span>
+    <p class="lokasi-name">Rumah Bpk. Hi. Gustriansyah</p>
+    <p class="lokasi-addr">
+      Jl. Meranti Gunung Gg. Meranti 3 No. 6 Tj. Gading Kedamaian Bandar Lampung<br>
+    </p>
+    <a class="btn-hijau" href="https://maps.google.com/?q=Cipinang+Melayu+Jakarta+Timur" target="_blank" rel="noopener">Buka di Maps</a>
+    <!-- <a class="btn-outline" href="#rsvp">Konfirmasi Hadir</a> -->
+  </div>
+
+  <!-- <div style="border:1px solid rgba(45,106,79,0.15);height:160px;background:var(--hijau-pale);display:flex;align-items:center;justify-content:center;gap:12px;" aria-hidden="true">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--hijau)" stroke-width="1.5">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z"/>
+      <circle cx="12" cy="9" r="2.5"/>
+    </svg>
+    <span style="font-size:13px;color:var(--hijau);font-weight:600;">Cipinang Melayu, Jakarta Timur</span>
+  </div> -->
+</section>
+
+<!-- ══ RSVP ══
+<div class="rsvp-section" id="rsvp" aria-label="Konfirmasi kehadiran">
+  <div class="tag">RSVP</div>
+  <h2>Konfirmasi <em style="color:var(--tembaga-lt)">Kehadiran</em></h2>
+  <p class="body">Mohon konfirmasi kehadiran Anda paling lambat <strong style="color:rgba(255,255,255,0.85);font-weight:600;">13 Juli 2025</strong> agar kami dapat mempersiapkan hidangan dengan baik.</p>
+
+  <form class="rsvp-form" onsubmit="handleRSVP(event)" aria-label="Form RSVP">
+    <input type="text" placeholder="Nama Lengkap" required aria-label="Nama lengkap"/>
+    <input type="tel" placeholder="Nomor WhatsApp" aria-label="Nomor WhatsApp"/>
+    <select aria-label="Konfirmasi kehadiran">
+      <option value="" disabled selected>Konfirmasi kehadiran…</option>
+      <option value="hadir">✓ Insyaallah Hadir</option>
+      <option value="tidak">✗ Berhalangan Hadir</option>
+    </select>
+    <input type="number" placeholder="Jumlah yang hadir (termasuk Anda)" min="1" max="10" aria-label="Jumlah tamu"/>
+    <textarea placeholder="Pesan & Doa untuk si kecil Faris…" aria-label="Pesan dan doa"></textarea>
+    <button type="submit">Kirim Konfirmasi</button>
+  </form>
+
+  <div id="rsvp-ok" style="display:none;margin-top:24px;padding:24px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);text-align:center;" role="alert">
+    <p style="font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--tembaga-lt);margin-bottom:8px;">Jazakumullahu Khairan</p>
+    <p style="font-size:13px;color:rgba(255,255,255,0.6);">Terima kasih telah mengkonfirmasi. Kami sangat menantikan kehadiran Anda dan keluarga.</p>
+  </div>
+</div> -->
+
+<!-- ══ PENUTUP ══ -->
+<section aria-label="Penutup">
+  <div class="tag">Dari Kami</div>
+  <h2>Terima Kasih <em>Atas Doa Restunya</em></h2>
+  <p class="body">Kehadiran Bapak/Ibu/Saudara/i adalah kehormatan terbesar bagi kami. Semoga silaturahmi kita senantiasa terjaga.</p>
+
+  <div class="divider">
+    <span class="divider-line"></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+    <span class="divider-line r"></span>
+  </div>
+
+  <p style="font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:var(--coklat-mid);">
+    Wassalamu'alaikum Warahmatullahi Wabarakatuh
+  </p>
+  <p style="margin-top:16px;font-size:13px;color:var(--muted);">
+    Hormat kami,<br>
+    <strong style="color:var(--coklat);font-weight:600;">Keluarga Besar Bapak Hi. Gustriansyah</strong>
+  </p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer aria-label="Footer">
+  <p class="footer-title">Tasyakuran & Doa Bersama · 2026</p>
+  <p>23 Juni 2026 &nbsp;·&nbsp; Bandar Lampung</p>
+</footer>
+
+<script>
+  function updateCountdown() {
+    const target = new Date('2026-06-28T15:00:00+07:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('cd-days').textContent  = pad(Math.floor(diff / 86400000));
+    document.getElementById('cd-hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    document.getElementById('cd-mins').textContent  = pad(Math.floor((diff % 3600000) / 60000));
+    document.getElementById('cd-secs').textContent  = pad(Math.floor((diff % 60000) / 1000));
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  function handleRSVP(e) {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('rsvp-ok').style.display = 'block';
+  }
+</script>
+</body>
+</html>
